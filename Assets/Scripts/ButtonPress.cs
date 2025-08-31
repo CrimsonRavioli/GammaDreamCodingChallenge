@@ -1,18 +1,30 @@
 using UnityEngine;
 using System;
+using UnityEngine.Events;
 
 public class ButtonPress : MonoBehaviour
 {
 
-    //TODO: This should notify other scripts when the button is pressed.
-    public event Action<ButtonPress> ButtonPressed;
+ 
+    public ButtonEvent ButtonPressed;
 
-    private void OnTriggerStay(Collider collider)
+    private void OnTriggerEnter (Collider other)
     {
-        if (collider.tag == "Player")
+        //activate the event when the player enters the trigger 
+        if (other.tag == "Player")
         {
-            //TODO: Alert the other scripts that the button has been pressed!
-            Debug.Log("Button Pressed!");
+            ButtonPressed.Invoke(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // Deactivate the event when the player leaves the trigger 
+        if (other.tag == "Player")
+        {
+            ButtonPressed.Invoke(false);
         }
     }
 }
+[Serializable]
+public class ButtonEvent  : UnityEvent<bool> { }
