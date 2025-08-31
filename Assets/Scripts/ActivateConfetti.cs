@@ -2,16 +2,10 @@ using UnityEngine;
 
 public class ActivateConfetti : MonoBehaviour
 {
-
     [SerializeField] private ParticleSystem confettiParticles;
-
-  
-
-    public void TriggerConfetti(bool trigerd)
+    public void TriggerConfetti(bool triggered)
     {
-
-        if (!trigerd) {return; }
-
+        if (!triggered) {return; }
         confettiParticles.Play();
     }
 }

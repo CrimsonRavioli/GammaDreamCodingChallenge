@@ -5,10 +5,8 @@ public class ButtonVisual : MonoBehaviour
     [SerializeField] GameObject _button;
     [SerializeField] Color buttonUpColor = Color.gray;
     [SerializeField] Color buttonDownColor = Color.red;
-
     [SerializeField] AudioClip buttonDownSound;
     [SerializeField] AudioClip buttonUpSound;
-
     MeshRenderer _buttonRenderer;
     AudioSource _audioSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -35,6 +33,5 @@ public class ButtonVisual : MonoBehaviour
             _audioSource.clip = buttonUpSound;
             _audioSource.Play();
         }
-        
     }
 }
